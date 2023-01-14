@@ -2,7 +2,7 @@ import Component from '../../lib/Component.js';
 import { createElement } from '../../lib/dom.js';
 
 const Nav = new Component({});
-Nav.node = document.getElementById('root');
+Nav.node = document.createElement('nav');
 Nav.template = function () {
   return createElement('nav', { class: 'my-component' }, [
     createElement('a', { href: '#home' }, 'Home'),
