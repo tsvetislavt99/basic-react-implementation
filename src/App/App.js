@@ -2,6 +2,7 @@ import Component from '../../lib/Component.js';
 import createNav from '../Nav/Nav.js';
 import createTitle from '../Title/Title.js';
 import createDescription from '../Description/Description.js';
+import createCounter from '../Counter/Counter.js';
 import createList from '../List/List.js';
 
 const navigationLinks = [
@@ -32,8 +33,17 @@ const FooterTitle = createTitle({
   title: 'I am the second title component in App.js!',
 });
 
+const Counter = createCounter();
+
 App.template = function () {
-  const componentsToRender = [Nav, Title, Description, List, FooterTitle];
+  const componentsToRender = [
+    Nav,
+    Title,
+    Description,
+    List,
+    Counter,
+    FooterTitle,
+  ];
 
   return componentsToRender.map((node) => {
     return this.node.appendChild(node);
