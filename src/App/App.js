@@ -1,30 +1,26 @@
 import Component from '../../lib/Component.js';
 import Nav from '../Nav/Nav.js';
+import Title from '../Title/Title.js';
 import Description from '../Description/Description.js';
 import List from '../List/List.js';
-import { createElement } from '../../lib/dom.js';
+
+const navigationLinks = [
+  { id: 1, name: 'Home', href: '#home' },
+  { id: 2, name: 'About', href: '#about' },
+  { id: 3, name: 'Contact', href: '#contact' },
+];
 
 const App = new Component();
-App.node = document.getElementById('root');
-App.template = function () {
-  return createElement('div', { class: 'my-component' }, [
-    Nav.node,
-    createElement(
-      'h1',
-      { class: 'my-component__title' },
-      this.state.title || 'Hello World! (Click me!)',
-    ),
-    Description.node,
-    List.node,
-  ]);
-};
-// Add an event listener to the component's node (the root element)
-App.node.addEventListener('click', (event) => {
-  event.preventDefault();
+App.setNode(document.getElementById('root'));
 
-  if (event.target.tagName === 'H1') {
-    App.setState({ title: 'Hello World! I am a stateful component' });
-  }
-});
+App.template = function () {
+  const elementsToRender = [Nav.node, Title.node, Description.node, List.node];
+  Nav.passProps({ navigationLinks });
+  Title.passProps({ title: 'Hello World!' });
+
+  return elementsToRender.map((node) => {
+    return this.node.appendChild(node);
+  });
+};
 
 export default App;

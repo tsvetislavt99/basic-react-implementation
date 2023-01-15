@@ -2,10 +2,8 @@ import Component from '../../lib/Component.js';
 import { createElement } from '../../lib/dom.js';
 
 const Description = new Component({});
-Description.node = createElement(
-  'div',
-  { class: 'my-description-component' },
-  [],
+Description.setNode(
+  createElement('div', { class: 'my-description-component' }, []),
 );
 Description.template = function () {
   return createElement('div', { class: 'my-Description' }, [
@@ -17,14 +15,13 @@ Description.template = function () {
   ]);
 };
 
-Description.node.appendChild(Description.template());
 Description.node.addEventListener('click', (event) => {
   event.preventDefault();
-  if (event.target.tagName === 'P') {
-    Description.setState({
-      description: 'This is my first component (I am a stateful component too)',
-    });
-  }
+  Description.setState({
+    description: 'This is my first component (I am a stateful component)',
+  });
 });
+
+Description.render();
 
 export default Description;

@@ -1,0 +1,14 @@
+.my-Description {
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.my-Description__text {
+  margin: 20px 0;
+}

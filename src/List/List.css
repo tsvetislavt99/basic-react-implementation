@@ -1,0 +1,17 @@
+.my-list-component {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.my-list {
+  margin: 0;
+  padding: 0;
+}
+
+.my-list__item {
+  margin: 10px 0;
+}
