@@ -1,5 +1,5 @@
 import Component from '../../lib/Component.js';
-import List from '../List/List.js';
+import createList from '../List/List.js';
 import { createElement } from '../../lib/dom.js';
 
 const descriptionList = [
@@ -11,30 +11,34 @@ const descriptionList = [
   { id: 3, name: 'But, it is rendered in App.js' },
 ];
 
-const Description = new Component({});
-Description.setNode(
-  createElement('div', { class: 'my-description-component' }, []),
-);
-Description.template = function () {
-  List.passProps({ myList: descriptionList });
+const List = createList({ myList: descriptionList });
 
-  return createElement('div', { class: 'my-Description' }, [
-    createElement(
-      'p',
-      { class: 'my-Description__text' },
-      this.state.description || 'This is my first component (Click me!)',
-    ),
-    List.node,
-  ]);
-};
+function createDescription(props) {
+  const Description = new Component(props);
+  Description.setNode(
+    createElement('div', { class: 'my-description-component' }, []),
+  );
 
-Description.node.addEventListener('click', (event) => {
-  event.preventDefault();
-  Description.setState({
-    description: 'This is my first component (I am a stateful component)',
+  Description.template = function () {
+    return createElement('div', { class: 'my-Description' }, [
+      createElement(
+        'p',
+        { class: 'my-Description__text' },
+        this.state.description || 'This is my first component (Click me!)',
+      ),
+      List.node,
+    ]);
+  };
+
+  Description.node.addEventListener('click', (event) => {
+    event.preventDefault();
+    Description.setState({
+      description: 'This is my first component (I am a stateful component)',
+    });
   });
-});
 
-Description.render();
+  Description.render();
+  return Description;
+}
 
-export default Description;
+export default createDescription;

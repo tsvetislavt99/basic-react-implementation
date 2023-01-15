@@ -1,8 +1,8 @@
 import Component from '../../lib/Component.js';
-import Nav from '../Nav/Nav.js';
-import Title from '../Title/Title.js';
-import Description from '../Description/Description.js';
-import List from '../List/List.js';
+import createNav from '../Nav/Nav.js';
+import createTitle from '../Title/Title.js';
+import createDescription from '../Description/Description.js';
+import createList from '../List/List.js';
 
 const navigationLinks = [
   { id: 1, name: 'Home', href: '#home' },
@@ -13,10 +13,33 @@ const navigationLinks = [
 const App = new Component();
 App.setNode(document.getElementById('root'));
 
+const Nav = createNav({ navigationLinks });
+const Title = createTitle({
+  title: 'I am the first title component in App.js!',
+});
+const List = createList({
+  myList: [
+    { id: 1, name: 'I am a separate list' },
+    { id: 2, name: 'From the one rendered in Description.js' },
+  ],
+});
+
+const Description = createDescription({
+  myList: List,
+});
+
+const FooterTitle = createTitle({
+  title: 'I am the second title component in App.js!',
+});
+
 App.template = function () {
-  const elementsToRender = [Nav.node, Title.node, Description.node, List.node];
-  Nav.passProps({ navigationLinks });
-  Title.passProps({ title: 'Hello World!' });
+  const elementsToRender = [
+    Nav.node,
+    Title.node,
+    Description.node,
+    List.node,
+    FooterTitle.node,
+  ];
 
   return elementsToRender.map((node) => {
     return this.node.appendChild(node);

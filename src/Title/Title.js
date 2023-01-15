@@ -1,17 +1,18 @@
 import Component from '../../lib/Component.js';
 import { createElement } from '../../lib/dom.js';
 
-// Pass default props to the component
-const Title = new Component();
+function createTitle(props) {
+  const Title = new Component(props);
+  Title.setNode(createElement('h1', { class: 'title-component' }, []));
 
-Title.setNode(createElement('h1', { class: 'title-compoenet' }, []));
+  Title.template = function () {
+    const title = this.props.title || 'Default title!';
 
-Title.template = function () {
-  const title = this.props.title || 'Default title!';
+    return title;
+  };
 
-  return title;
-};
+  Title.render();
+  return Title;
+}
 
-Title.render();
-
-export default Title;
+export default createTitle;
