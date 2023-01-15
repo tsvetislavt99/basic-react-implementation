@@ -26,7 +26,6 @@ Nav.template = function () {
   );
 };
 
-// Nav.node.appendChild(Nav.template());
 Nav.node.addEventListener('click', (event) => {
   event.preventDefault();
   if (event.target.tagName === 'A') {
