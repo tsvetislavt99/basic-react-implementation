@@ -10,6 +10,7 @@
 .my-list {
   margin: 0;
   padding: 0;
+  text-align: start;
 }
 
 .my-list__item {

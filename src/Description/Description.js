@@ -24,21 +24,23 @@ function createDescription(props) {
       createElement(
         'p',
         { class: 'my-Description__text' },
-        this.state.description || 'This is my first component (Click me!)',
+        this.state.description ||
+          'Text inside the description component (Click me!)',
       ),
-      List.node,
+      List,
     ]);
   };
 
   Description.node.addEventListener('click', (event) => {
     event.preventDefault();
     Description.setState({
-      description: 'This is my first component (I am a stateful component)',
+      description:
+        'Text inside the description component (I am a stateful component)',
     });
   });
 
   Description.render();
-  return Description;
+  return Description.node;
 }
 
 export default createDescription;

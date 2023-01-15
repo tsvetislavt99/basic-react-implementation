@@ -29,7 +29,7 @@ function createNav(props) {
   });
 
   Nav.render();
-  return Nav;
+  return Nav.node;
 }
 
 export default createNav;

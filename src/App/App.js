@@ -33,15 +33,9 @@ const FooterTitle = createTitle({
 });
 
 App.template = function () {
-  const elementsToRender = [
-    Nav.node,
-    Title.node,
-    Description.node,
-    List.node,
-    FooterTitle.node,
-  ];
+  const componentsToRender = [Nav, Title, Description, List, FooterTitle];
 
-  return elementsToRender.map((node) => {
+  return componentsToRender.map((node) => {
     return this.node.appendChild(node);
   });
 };

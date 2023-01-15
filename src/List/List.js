@@ -18,7 +18,7 @@ function createList(props) {
   };
 
   List.render();
-  return List;
+  return List.node;
 }
 
 export default createList;

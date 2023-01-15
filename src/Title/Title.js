@@ -12,7 +12,7 @@ function createTitle(props) {
   };
 
   Title.render();
-  return Title;
+  return Title.node;
 }
 
 export default createTitle;
