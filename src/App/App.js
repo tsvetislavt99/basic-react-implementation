@@ -4,6 +4,7 @@ import createTitle from '../Title/Title.js';
 import createDescription from '../Description/Description.js';
 import createCounter from '../Counter/Counter.js';
 import createList from '../List/List.js';
+import createChangingColorTitle from '../ChangingColorTitle/ChangingColorTitle.js';
 
 const navigationLinks = [
   { id: 1, name: 'Home', href: '#home' },
@@ -33,11 +34,15 @@ const FooterTitle = createTitle({
   title: 'I am the second title component in App.js!',
 });
 
+//This one uses useEffect and useState
+const ChangingColorTitle = createChangingColorTitle();
+
 const Counter = createCounter();
 
 App.template = function () {
   const componentsToRender = [
     Nav,
+    ChangingColorTitle,
     Title,
     Description,
     List,
